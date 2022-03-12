@@ -1,0 +1,6 @@
+.vscode
+.git
+.env
+.pytest_cache
+.gitignore
+.README.md
