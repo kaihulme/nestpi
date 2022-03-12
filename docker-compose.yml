@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  web: 
-    build: app 
-    ports: 
+  web:
+    build: .
+    ports:
       - '5000:5000'
