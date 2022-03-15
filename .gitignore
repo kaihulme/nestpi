@@ -131,6 +131,10 @@ dmypy.json
 
 # Pytest
 .pytest_cache/
+tests/
+
+# SQLite
+instance/
 
 # VSCode
 .vscode/
