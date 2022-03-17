@@ -7,11 +7,11 @@ CREATE TABLE users (
   password TEXT NOT NULL
 );
 
-CREATE TABLE nest_clips (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  author_id INTEGER NOT NULL,
-  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  title TEXT NOT NULL,
-  clip_link TEXT NOT NULL,
-  FOREIGN KEY (author_id) REFERENCES user (id)
-);
+-- CREATE TABLE nest_clips (
+--   id INTEGER PRIMARY KEY AUTOINCREMENT,
+--   author_id INTEGER NOT NULL,
+--   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--   title TEXT NOT NULL,
+--   clip_link TEXT NOT NULL,
+--   FOREIGN KEY (author_id) REFERENCES user (id)
+-- );
