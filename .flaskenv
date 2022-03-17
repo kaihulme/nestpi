@@ -1,0 +1,2 @@
+FLASK_APP=nestpi
+FLASK_ENV=development
