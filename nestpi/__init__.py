@@ -1,5 +1,5 @@
 import os
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, render_template
 
 from nestpi import db
 from nestpi import auth
@@ -28,7 +28,7 @@ def create_app(test_config=None):
 
     @app.route("/hello/")
     def hello():
-        return "Hello, World!"
+        return render_template("hello.html")
 
     @app.route("/index/")
     def index():
