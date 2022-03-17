@@ -1,8 +1,8 @@
 import os
 from flask import Flask
 
-import db
-import auth
+from nestpi import db
+from nestpi import auth
 
 
 def create_app(test_config=None):
