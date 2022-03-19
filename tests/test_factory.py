@@ -11,7 +11,7 @@ def test_config():
 
 def test_hello(client):
     """
-    Check reponse of /hello.
+    Check response of /hello.
     """
     response = client.get("/hello/")
     assert b"Hello World!" in response.data
