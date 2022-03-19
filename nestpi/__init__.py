@@ -26,9 +26,9 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route("/hello/")
+    @app.route("/home/")
     def hello():
-        return render_template("hello.html")
+        return render_template("home.html")
 
     @app.route("/")
     def index():

@@ -13,7 +13,7 @@ def test_hello(client):
     """
     Check response of /hello.
     """
-    response = client.get("/hello/")
+    response = client.get("/home/")
     assert b"Hello World!" in response.data
 
 
@@ -23,4 +23,4 @@ def test_index(client):
     """
     response = client.get("/", follow_redirects=True)
     assert len(response.history) == 1
-    assert response.request.path == "/hello/"
+    assert response.request.path == "/home/"
