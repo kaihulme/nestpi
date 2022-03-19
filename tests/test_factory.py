@@ -11,7 +11,7 @@ def test_config():
 
 def test_hello(client):
     """
-    Check response of /hello.
+    Check response of home/.
     """
     response = client.get("/home/")
     assert b"Hello World!" in response.data
@@ -19,7 +19,7 @@ def test_hello(client):
 
 def test_index(client):
     """
-    Check / redirects to hello/.
+    Check / redirects to home/.
     """
     response = client.get("/", follow_redirects=True)
     assert len(response.history) == 1
