@@ -23,8 +23,7 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Auto-format with Black
-        run: /
-          black .
+        uses: psf/black@stable
 
       - name: Lint with Flake8
         run: |
