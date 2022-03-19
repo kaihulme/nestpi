@@ -19,8 +19,8 @@ def test_hello(client):
 
 def test_index(client):
     """
-    Check index/ redirects to hello/.
+    Check / redirects to hello/.
     """
-    response = client.get("/index/", follow_redirects=True)
+    response = client.get("/", follow_redirects=True)
     assert len(response.history) == 1
     assert response.request.path == "/hello/"

@@ -30,7 +30,7 @@ def create_app(test_config=None):
     def hello():
         return render_template("hello.html")
 
-    @app.route("/index/")
+    @app.route("/")
     def index():
         return redirect(url_for("hello"))
 
