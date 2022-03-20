@@ -68,5 +68,5 @@ jobs:
       - name: Deploy to Beanstalk
         run: |
           aws elasticbeanstalk update-environment \
-          --environment-name Nestpi-env \
+          --environment-name Nestpi-env-1 \
           --version-label "ver-${{github.sha}}"
