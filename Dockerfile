@@ -6,10 +6,11 @@ COPY . .
 # quiet flag to supress root user warnings
 RUN pip install -r requirements.txt -qqq
 
-EXPOSE 5000
-
 # initialise database
 RUN flask init-db
 
-# run flask application
-RUN flask run --host=0.0.0.0
+EXPOSE 5000
+
+# run flask application with gunicorn wsgi
+ENTRYPOINT ["gunicorn"] 
+CMD ["--bind", "0.0.0.0:5000", "nestpi:create_app()"]
