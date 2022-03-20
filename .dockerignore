@@ -4,3 +4,6 @@
 .pytest_cache
 .gitignore
 .README.md
+.elasticbeanstalk/*
+.git
+.gitignore
