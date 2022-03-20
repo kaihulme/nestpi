@@ -45,3 +45,16 @@ jobs:
 
       - name: Upload deployment package to S3 bucket
         run: aws s3 cp deploy.zip s3://nestpi-deploy/
+
+      - name: Create new Beanstalk version
+        run: |
+          aws elasticbeanstalk create-application-version \
+          --application-name nestpi \
+          --source-bundle S3Bucket="nestpi-deploy",S3Key="deploy.zip" \
+          --version-label "ver-${{github.sha}}" \
+          --description "commit-sha-${{github.sha}}"
+
+      - name: Deploy to Beanstalk
+        run: aws elasticbeanstalk update-environment \
+        --environment-name nestpi-env \
+        --version-label "ver-${{github.sha}}"
