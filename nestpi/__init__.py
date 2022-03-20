@@ -10,32 +10,32 @@ def create_app(test_config=None):
     Flask application factory function.
     """
 
-    app = Flask(__name__, instance_relative_config=True)
-    app.config.from_mapping(
+    application = Flask(__name__, instance_relative_config=True)
+    application.config.from_mapping(
         SECRET_KEY="dev",
-        DATABASE=os.path.join(app.instance_path, "nestpi.sqlite"),
+        DATABASE=os.path.join(application.instance_path, "nestpi.sqlite"),
     )
 
     if test_config is None:
-        app.config.from_pyfile("config.py", silent=True)
+        application.config.from_pyfile("config.py", silent=True)
     else:
-        app.config.from_mapping(test_config)
+        application.config.from_mapping(test_config)
 
     try:
-        os.makedirs(app.instance_path)
+        os.makedirs(application.instance_path)
     except OSError:
         pass
 
-    @app.route("/home/")
+    @application.route("/home/")
     def hello():
         return render_template("home.html")
 
-    @app.route("/")
+    @application.route("/")
     def index():
         return redirect(url_for("hello"))
 
-    db.init_app(app)
+    db.init_app(application)
 
-    app.register_blueprint(auth.bp)
+    application.register_blueprint(auth.bp)
 
-    return app
+    return application

@@ -27,9 +27,9 @@ def test_invalid_login(client, auth, username, password, message):
     assert message in auth.login(username, password).data
 
 
-def test_register(app, client):
+def test_register(application, client):
     client.post("/auth/register", data={"username": "x", "password": "x"})
-    with app.app_context():
+    with application.app_context():
         assert get_db().execute("SELECT * FROM user WHERE username = 'x'").fetchone()
 
 
