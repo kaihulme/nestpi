@@ -3,8 +3,9 @@ FROM python:3.8-alpine
 WORKDIR /app
 COPY . .
 
-# quiet flag to supress root user warnings
-RUN pip install -r requirements.txt -qqq
+RUN \
+	apk add build-base \
+	&& pip install -r requirements.txt
 
 # initialise database
 RUN flask init-db

@@ -1,0 +1,11 @@
+import os
+
+
+RDS_HOSTNAME = os.environ["RDS_HOSTNAME"]
+RDS_DB_NAME = os.environ["RDS_DB_NAME"]
+RDS_USERNAME = os.environ["RDS_USERNAME"]
+RDS_PASSWORD = os.environ["RDS_PASSWORD"]
+
+SQLALCHEMY_DATABASE_URI = (
+    f"mysql://{RDS_USERNAME}:{RDS_PASSWORD}@{RDS_HOSTNAME}/{RDS_DB_NAME}"
+)
