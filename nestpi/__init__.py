@@ -1,15 +1,13 @@
 import os
 from flask import Flask, redirect, url_for, render_template
 
-from nestpi import db
-from nestpi import auth
+from nestpi import db, auth
 
 
 def create_app(test_config=None):
     """
     Flask application factory function.
     """
-
     application = Flask(__name__, instance_relative_config=True)
     application.config.from_mapping(
         SECRET_KEY="dev",

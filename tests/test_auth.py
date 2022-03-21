@@ -5,6 +5,9 @@ from nestpi.db import get_db
 
 
 def test_login(client, auth):
+    """
+    Check login sets session user.
+    """
     with client:
         auth.login()
         client.get("/")
@@ -13,6 +16,9 @@ def test_login(client, auth):
 
 
 def test_logout(client, auth):
+    """
+    Check logout removes session user.
+    """
     with client:
         auth.login()
         auth.logout()
@@ -24,10 +30,16 @@ def test_logout(client, auth):
     (("x", "test", b"Incorrect username"), ("test", "x", b"Incorrect password")),
 )
 def test_invalid_login(client, auth, username, password, message):
+    """
+    Check invalid login credentials show error message.
+    """
     assert message in auth.login(username, password).data
 
 
 def test_register(application, client):
+    """
+    Check registering new user adds credentials to database.
+    """
     client.post("/auth/register", data={"username": "x", "password": "x"})
     with application.app_context():
         assert get_db().execute("SELECT * FROM user WHERE username = 'x'").fetchone()
@@ -42,6 +54,9 @@ def test_register(application, client):
     ),
 )
 def test_invalid_register(client, username, password, message):
+    """
+    Check registering user with invalid credentials shows error message.
+    """
     assert (
         message
         in client.post(
