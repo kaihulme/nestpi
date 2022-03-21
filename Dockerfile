@@ -6,7 +6,7 @@ COPY . .
 # install dependencies
 RUN \
 	apk add g++ \
-	&& pip install -r requirements.txt
+	&& pip install -qqq -r requirements.txt
 
 # initialise database
 RUN flask init-db
